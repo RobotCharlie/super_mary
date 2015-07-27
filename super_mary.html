@@ -1,0 +1,55 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="./mary.css"/>
+
+<script type="text/javascript" src="./myFucs.js">
+
+	// This is the Prototype of Mary
+	function Mary(){
+		this.x = 0;
+		this.y = 0;
+
+		// This is the Moving function: 0-->UP 1-->LEFT 2-->DOWN 3-->RIGHT
+		this.moving = function(direction){
+
+			switch(direction){
+				case 0:
+					window.alert("Going UP");
+					break;
+				case 1:
+					window.alert("Going LEFT");
+					break;
+				case 2:
+					window.alert("Going DOWN");
+					break;
+				case 3:
+					window.alert("Going RIGHT");
+					break;
+				default:
+					break;
+			}
+
+		}
+	}
+
+	// Global method
+	function maryMoving () {
+		window.alert("mary is moving");
+	}
+
+
+</script>
+</head>
+<body>
+	<div class="game_div">
+		<img src="./utility/eater_right.png" style="width:40">
+	</div>
+	<table border="3px" class="control_panel">
+		<tr> <td colspan="3">Game Panel</td> </tr>
+		<tr> <td></td> <td><input type="button" value="UP" onclick="maryMoving()"</td> <td></td> </tr>
+		<tr> <td><input type="button" value="LEFT"</td> <td></td> <td><input type="button" value="RIGHT"</td> </tr>
+		<tr> <td></td> <td><input type="button" value="DOWN"</td> <td></td> </tr>
+	</table>
+
+</body>
+</html>
