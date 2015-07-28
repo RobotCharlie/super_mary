@@ -3,6 +3,7 @@
 	width: 1000px;
 	height:500px;
 	background-color: black;
+	position: absolute;
 }
 
 .control_panel{
@@ -11,6 +12,8 @@
 	width: 300px;
 	height: 300px;
 	font-size: 30px;
+	position: absolute;
+	top: 505px;
 
 }
 
