@@ -11,28 +11,52 @@
 
 		// This is the Moving function: 0-->UP 1-->LEFT 2-->DOWN 3-->RIGHT
 		this.moving = function(direction){
+		//DONT FORGET TO USE ""
+		var myMary = document.getElementById("my_mary_right"); 
+		var styleTop = myMary.style.top;
+		var styleLeft = myMary.style.left;
+		var styleTopWithoutPx;
+		var styleLeftWithoutPx;
 
 
 			switch(direction){
+
 				case 0:
-					window.alert("Going UP");
-					var myMary = document.getElementById(my_mary_right);
-					var styleTop = myMary.style.left;
+
+
 					// Drop "px"
-					var styleTopWithoutPx = styleTop.substr(0,styleTop.length-2);
+					styleTopWithoutPx = styleTop.substr(0, styleTop.length-2);
+					styleTopWithoutPx = parseInt(styleTopWithoutPx-10);
+					myMary.style.top = styleTopWithoutPx +"px";
+
+					break;
+
+				case 1:
+
+					styleLeftWithoutPx = styleLeft.substr(0, styleLeft.length-2);
+					// window.alert(styleLeftWithoutPx);
+					styleLeftWithoutPx = parseInt(styleLeftWithoutPx)-10;
+					// window.alert(styleLeftWithoutPx);
+					myMary.style.left = styleLeftWithoutPx +"px";
+
+					break;
+
+				case 2:
+
+					// Drop "px"
+					styleTopWithoutPx = styleTop.substr(0,styleTop.length-2);
 					styleTopWithoutPx = parseInt(styleTopWithoutPx)+10;
 					myMary.style.top = styleTopWithoutPx +"px";
-					
-					break;
-				case 1:
-					window.alert("Going LEFT");
-					break;
-				case 2:
-					window.alert("Going DOWN");
+
 					break;
 				case 3:
-					window.alert("Going RIGHT");
+
+					styleLeftWithoutPx = styleLeft.substr(0, styleLeft.length-2);
+					styleLeftWithoutPx = parseInt(styleLeftWithoutPx)+10;
+					myMary.style.left = styleLeftWithoutPx +"px";
+
 					break;
+
 				default:
 					break;
 			}
@@ -49,7 +73,7 @@
 </head>
 <body>
 	<div class="game_div">
-		<img id="my_mary_right" src="./utility/eater_right.png" style="position:absolute; width:40px; left:20px; top:20px">
+		<img id="my_mary_right" src="./utility/eater_right.png" style="position:absolute; width:40px; left:20px; top:20px;">
 	</div>
 	<table border="3px" class="control_panel">
 		<tr> <td colspan="3">Game Panel</td> </tr>
