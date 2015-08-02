@@ -8,57 +8,92 @@
 	function Mary(){
 		this.x = 0;
 		this.y = 0;
+		var score = 0;
+
+
 
 		// This is the Moving function: 0-->UP 1-->LEFT 2-->DOWN 3-->RIGHT
 		this.moving = function(direction){
 		//DONT FORGET TO USE ""
-		var myMary = document.getElementById("my_mary_right"); 
+		var myMary = document.getElementById("my_mary"); 
 		var styleTop = myMary.style.top;
 		var styleLeft = myMary.style.left;
 		var styleTopWithoutPx;
 		var styleLeftWithoutPx;
 
-
 			switch(direction){
 
 				case 0:
 
-
+					myMary.src = "./utility/eater_up.png"
 					// Drop "px"
 					styleTopWithoutPx = styleTop.substr(0, styleTop.length-2);
-					styleTopWithoutPx = parseInt(styleTopWithoutPx-10);
-					myMary.style.top = styleTopWithoutPx +"px";
+					styleTopWithoutPx = parseInt(styleTopWithoutPx);
+					if (styleTopWithoutPx>=10) {
+						myMary.style.top = styleTopWithoutPx-10+"px";
+					};
+					
 
 					break;
 
 				case 1:
 
+					myMary.src = "./utility/eater_left.png"
 					styleLeftWithoutPx = styleLeft.substr(0, styleLeft.length-2);
-					// window.alert(styleLeftWithoutPx);
-					styleLeftWithoutPx = parseInt(styleLeftWithoutPx)-10;
-					// window.alert(styleLeftWithoutPx);
-					myMary.style.left = styleLeftWithoutPx +"px";
-
+					styleLeftWithoutPx = parseInt(styleLeftWithoutPx);
+					if (styleLeftWithoutPx>=10) {
+						myMary.style.left = styleLeftWithoutPx-10+"px";
+					};
 					break;
 
 				case 2:
 
+					myMary.src = "./utility/eater_down.png"
 					// Drop "px"
 					styleTopWithoutPx = styleTop.substr(0,styleTop.length-2);
-					styleTopWithoutPx = parseInt(styleTopWithoutPx)+10;
-					myMary.style.top = styleTopWithoutPx +"px";
+					styleTopWithoutPx = parseInt(styleTopWithoutPx);
+					if (styleTopWithoutPx<=450) {
+						myMary.style.top = styleTopWithoutPx+10+"px";
+					};
 
 					break;
 				case 3:
 
+					myMary.src = "./utility/eater_right.png"
 					styleLeftWithoutPx = styleLeft.substr(0, styleLeft.length-2);
-					styleLeftWithoutPx = parseInt(styleLeftWithoutPx)+10;
-					myMary.style.left = styleLeftWithoutPx +"px";
+					styleLeftWithoutPx = parseInt(styleLeftWithoutPx);
+					if (styleLeftWithoutPx<=1370) {
+						myMary.style.left = styleLeftWithoutPx+10+"px";
+					};
 
 					break;
 
 				default:
 					break;
+				}
+		}
+
+		this.checkIfTheBeanIsEaten = function(){
+
+
+
+			// Get the position of Mary
+			var myMary = document.getElementById("my_mary"); 
+			var styleTopMary = parseInt(myMary.style.top.substr(0, myMary.style.top.length-2));
+			var styleLeftMary = parseInt(myMary.style.left.substr(0, myMary.style.left.length-2));
+
+
+			// Get the position of Bean
+			var myBean = document.getElementById("my_bean"); 
+			var styleTopBean = parseInt(myBean.style.top.substr(0, myBean.style.top.length-2));
+			var styleLeftBean = parseInt(myBean.style.left.substr(0, myBean.style.left.length-2));
+
+			if(((styleTopMary<=styleTopBean+20) && (styleTopMary>=styleTopBean-20)) && ((styleLeftMary<=styleLeftBean+20) && (styleLeftMary>=styleLeftBean-20))){
+				myBean.style.top = Math.floor((Math.random()*450)+1)+"px";
+				myBean.style.left = Math.floor((Math.random()*1370)+1)+"px";
+				score++;
+				// Set the Score Panel
+				document.getElementById("score").innerHTML = score;
 			}
 
 		}
@@ -73,13 +108,18 @@
 </head>
 <body>
 	<div class="game_div">
-		<img id="my_mary_right" src="./utility/eater_right.png" style="position:absolute; width:40px; left:20px; top:20px;">
+		<img id="my_mary" src="./utility/eater_right.png" style="position:absolute; width:40px; left:20px; top:20px;">
+		<img id="my_bean" src="./utility/bean.png" style="position:absolute; width:20px; left:150px; top:150px;"
 	</div>
 	<table border="3px" class="control_panel">
 		<tr> <td colspan="3">Game Panel</td> </tr>
 		<tr> <td></td> <td><input type="button" value="UP" onclick="maryMoving(0)"</td> <td></td> </tr>
 		<tr> <td><input type="button" value="LEFT" onclick="maryMoving(1)"</td> <td></td> <td><input type="button" value="RIGHT" onclick="maryMoving(3)"</td> </tr>
 		<tr> <td></td> <td><input type="button" value="DOWN" onclick="maryMoving(2)"</td> <td></td> </tr>
+	</table>
+	<table border="3px" class="score_panel">
+		<tr> <td>Score Panel</td> </tr>
+		<tr> <td>You have ate <p id="score">0</p> beans!!! </td> </tr>
 	</table>
 
 

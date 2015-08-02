@@ -1,6 +1,6 @@
 
 .game_div{
-	width: 1000px;
+	width: 1420px;
 	height:500px;
 	background-color: black;
 	position: absolute;
@@ -14,7 +14,16 @@
 	font-size: 30px;
 	position: absolute;
 	top: 505px;
+}
 
+.score_panel{
+	border: 3px solid black;
+	width: 400px;
+	height: 200px;
+	font-size: 30px;
+	position: absolute;
+	top: 505px;
+	left: 350px;
 }
 
 @font-face{
