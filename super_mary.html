@@ -15,7 +15,7 @@
 		// This is the Moving function: 0-->UP 1-->LEFT 2-->DOWN 3-->RIGHT
 		this.moving = function(direction){
 		//DONT FORGET TO USE ""
-		var myMary = document.getElementById("my_mary"); 
+		var myMary = document.getElementById("my_mary_y"); 
 		var styleTop = myMary.style.top;
 		var styleLeft = myMary.style.left;
 		var styleTopWithoutPx;
@@ -25,12 +25,12 @@
 
 				case 0:
 
-					myMary.src = "./utility/eater_up.png"
+					myMary.src = "./utility/y_eater_up.png"
 					// Drop "px"
 					styleTopWithoutPx = styleTop.substr(0, styleTop.length-2);
 					styleTopWithoutPx = parseInt(styleTopWithoutPx);
 					if (styleTopWithoutPx>=10) {
-						myMary.style.top = styleTopWithoutPx-10+"px";
+						myMary.style.top = styleTopWithoutPx-20+"px";
 					};
 					
 
@@ -38,32 +38,32 @@
 
 				case 1:
 
-					myMary.src = "./utility/eater_left.png"
+					myMary.src = "./utility/y_eater_left.png"
 					styleLeftWithoutPx = styleLeft.substr(0, styleLeft.length-2);
 					styleLeftWithoutPx = parseInt(styleLeftWithoutPx);
 					if (styleLeftWithoutPx>=10) {
-						myMary.style.left = styleLeftWithoutPx-10+"px";
+						myMary.style.left = styleLeftWithoutPx-20+"px";
 					};
 					break;
 
 				case 2:
 
-					myMary.src = "./utility/eater_down.png"
+					myMary.src = "./utility/y_eater_down.png"
 					// Drop "px"
 					styleTopWithoutPx = styleTop.substr(0,styleTop.length-2);
 					styleTopWithoutPx = parseInt(styleTopWithoutPx);
 					if (styleTopWithoutPx<=450) {
-						myMary.style.top = styleTopWithoutPx+10+"px";
+						myMary.style.top = styleTopWithoutPx+20+"px";
 					};
 
 					break;
 				case 3:
 
-					myMary.src = "./utility/eater_right.png"
+					myMary.src = "./utility/y_eater_right.png"
 					styleLeftWithoutPx = styleLeft.substr(0, styleLeft.length-2);
 					styleLeftWithoutPx = parseInt(styleLeftWithoutPx);
 					if (styleLeftWithoutPx<=1370) {
-						myMary.style.left = styleLeftWithoutPx+10+"px";
+						myMary.style.left = styleLeftWithoutPx+20+"px";
 					};
 
 					break;
@@ -75,10 +75,8 @@
 
 		this.checkIfTheBeanIsEaten = function(){
 
-
-
 			// Get the position of Mary
-			var myMary = document.getElementById("my_mary"); 
+			var myMary = document.getElementById("my_mary_y"); 
 			var styleTopMary = parseInt(myMary.style.top.substr(0, myMary.style.top.length-2));
 			var styleLeftMary = parseInt(myMary.style.left.substr(0, myMary.style.left.length-2));
 
@@ -102,14 +100,28 @@
 	// Creat a new Mary
 	var mary = new Mary();
 
+	// function(event){
+	// 	var x = event.keyCode;
+	// 	if(x == 27){
+	// 		alert("asf");
+	// 	}
+	// 	maryMoving(x);
+	// }
 
+	function keyCode(event) {
+    var x = event.keyCode;
+    if (x == 87) {
+        window.alert ("You pressed the Escape key!");
+    }
+}
 
 </script>
 </head>
 <body>
 	<div class="game_div">
-		<img id="my_mary" src="./utility/eater_right.png" style="position:absolute; width:40px; left:20px; top:20px;">
-		<img id="my_bean" src="./utility/bean.png" style="position:absolute; width:20px; left:150px; top:150px;"
+		<img id="my_mary_y" src="./utility/y_eater_right.png" style="position:absolute; width:40px; left:20px; top:20px;">
+		<img id="my_bean" src="./utility/bean.png" style="position:absolute; width:20px; left:150px; top:150px;">
+		<img id="my_mary_g" src="./utility/g_eater_left.png" style="position:absolute; width:40px; left:1360px; top:20px">
 	</div>
 	<table border="3px" class="control_panel">
 		<tr> <td colspan="3">Game Panel</td> </tr>
